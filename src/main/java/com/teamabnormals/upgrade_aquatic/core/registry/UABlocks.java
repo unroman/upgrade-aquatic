@@ -15,6 +15,7 @@ import com.teamabnormals.blueprint.common.block.sign.BlueprintWallSignBlock;
 import com.teamabnormals.blueprint.common.block.thatch.ThatchBlock;
 import com.teamabnormals.blueprint.common.block.thatch.ThatchSlabBlock;
 import com.teamabnormals.blueprint.common.block.thatch.ThatchStairBlock;
+import com.teamabnormals.blueprint.core.api.BlockSetTypeRegistryHelper;
 import com.teamabnormals.blueprint.core.api.WoodTypeRegistryHelper;
 import com.teamabnormals.blueprint.core.util.PropertyUtil;
 import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
@@ -31,6 +32,7 @@ import com.teamabnormals.upgrade_aquatic.core.other.UAConstants;
 import net.minecraft.Util;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -513,12 +515,11 @@ public class UABlocks {
 		return stack -> (BlockSubRegistryHelper.areModsLoaded(modids) && of(ForgeRegistries.ITEMS.getValue(location)).test(stack));
 	}
 
-
 	public static final class UAProperties {
-		public static final BlockSetType DRIFTWOOD_BLOCK_SET = BlockSetType.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":driftwood"));
-		public static final BlockSetType RIVER_BLOCK_SET = BlockSetType.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":river"));
-		public static final BlockSetType TOOTH_BLOCK_SET = BlockSetType.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":tooth"));
-		public static final BlockSetType GLASS_BLOCK_SET = BlockSetType.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":glass"));
+		public static final BlockSetType DRIFTWOOD_BLOCK_SET = BlockSetTypeRegistryHelper.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":driftwood"));
+		public static final BlockSetType RIVER_BLOCK_SET = BlockSetTypeRegistryHelper.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":river"));
+		public static final BlockSetType TOOTH_BLOCK_SET = BlockSetTypeRegistryHelper.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":tooth", true, SoundType.STONE, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
+		public static final BlockSetType GLASS_BLOCK_SET = BlockSetTypeRegistryHelper.register(new BlockSetType(UpgradeAquatic.MOD_ID + ":glass", true, SoundType.GLASS, SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN, SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN, SoundEvents.STONE_PRESSURE_PLATE_CLICK_OFF, SoundEvents.STONE_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
 
 		public static final WoodType DRIFTWOOD_WOOD_TYPE = WoodTypeRegistryHelper.registerWoodType(new WoodType(UpgradeAquatic.MOD_ID + ":driftwood", DRIFTWOOD_BLOCK_SET));
 		public static final WoodType RIVER_WOOD_TYPE = WoodTypeRegistryHelper.registerWoodType(new WoodType(UpgradeAquatic.MOD_ID + ":river", RIVER_BLOCK_SET));
