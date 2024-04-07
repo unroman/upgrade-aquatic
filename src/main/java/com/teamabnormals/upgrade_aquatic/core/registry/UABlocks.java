@@ -113,9 +113,9 @@ public class UABlocks {
 
 	public static final RegistryObject<Block> TOOTH_BLOCK = HELPER.createBlock("tooth_block", () -> new Block(Properties.copy(Blocks.END_STONE)));
 	public static final RegistryObject<Block> TOOTH_TILES = HELPER.createBlock("tooth_tiles", () -> new Block(Properties.copy(Blocks.END_STONE)));
-	public static final RegistryObject<Block> TOOTH_STAIRS = HELPER.createBlock("tooth_stairs", () -> new StairBlock(() -> TOOTH_BLOCK.get().defaultBlockState(), Properties.copy(Blocks.END_STONE)));
-	public static final RegistryObject<Block> TOOTH_SLAB = HELPER.createBlock("tooth_slab", () -> new SlabBlock(Properties.copy(Blocks.END_STONE)));
-	public static final RegistryObject<Block> TOOTH_WALL = HELPER.createBlock("tooth_wall", () -> new WallBlock(Properties.copy(Blocks.END_STONE)));
+	public static final RegistryObject<Block> TOOTH_TILE_STAIRS = HELPER.createBlock("tooth_stairs", () -> new StairBlock(() -> TOOTH_BLOCK.get().defaultBlockState(), Properties.copy(Blocks.END_STONE)));
+	public static final RegistryObject<Block> TOOTH_TILE_SLAB = HELPER.createBlock("tooth_slab", () -> new SlabBlock(Properties.copy(Blocks.END_STONE)));
+	public static final RegistryObject<Block> TOOTH_TILE_WALL = HELPER.createBlock("tooth_wall", () -> new WallBlock(Properties.copy(Blocks.END_STONE)));
 	public static final RegistryObject<Block> TOOTH_BRICKS = HELPER.createBlock("tooth_bricks", () -> new Block(Properties.copy(Blocks.END_STONE)));
 	public static final RegistryObject<Block> CHISELED_TOOTH_BRICKS = HELPER.createBlock("chiseled_tooth_bricks", () -> new Block(Properties.copy(Blocks.END_STONE)));
 	public static final RegistryObject<Block> TOOTH_BRICK_STAIRS = HELPER.createBlock("tooth_brick_stairs", () -> new StairBlock(() -> TOOTH_BLOCK.get().defaultBlockState(), Properties.copy(Blocks.END_STONE)));
@@ -436,7 +436,7 @@ public class UABlocks {
 				.addItemsBefore(of(Blocks.NETHERRACK),
 						LUMINOUS_PRISMARINE, LUMINOUS_PRISMARINE_STAIRS, LUMINOUS_PRISMARINE_SLAB, PRISMARINE_ROD_BUNDLE,
 						SCUTE_BLOCK, SCUTE_SHINGLES, SCUTE_SHINGLE_STAIRS, SCUTE_SHINGLE_SLAB, SCUTE_SHINGLE_WALL, CHISELED_SCUTE_SHINGLES, SCUTE_PAVEMENT, SCUTE_PAVEMENT_STAIRS, SCUTE_PAVEMENT_SLAB, SCUTE_PAVEMENT_WALL,
-						TOOTH_BLOCK, TOOTH_BRICKS, TOOTH_BRICK_STAIRS, TOOTH_BRICK_SLAB, TOOTH_BRICK_WALL, CHISELED_TOOTH_BRICKS, TOOTH_TILES, TOOTH_STAIRS, TOOTH_SLAB, TOOTH_WALL, TOOTH_DOOR, TOOTH_TRAPDOOR,
+						TOOTH_BLOCK, TOOTH_BRICKS, TOOTH_BRICK_STAIRS, TOOTH_BRICK_SLAB, TOOTH_BRICK_WALL, CHISELED_TOOTH_BRICKS, TOOTH_TILES, TOOTH_TILE_STAIRS, TOOTH_TILE_SLAB, TOOTH_TILE_WALL, TOOTH_DOOR, TOOTH_TRAPDOOR,
 						CORALSTONE, CORALSTONE_STAIRS, CORALSTONE_SLAB, CORALSTONE_WALL, CHISELED_CORALSTONE,
 						TUBE_CORALSTONE, TUBE_CORALSTONE_STAIRS, TUBE_CORALSTONE_SLAB, TUBE_CORALSTONE_WALL, TUBE_CHISELED_CORALSTONE,
 						BRAIN_CORALSTONE, BRAIN_CORALSTONE_STAIRS, BRAIN_CORALSTONE_SLAB, BRAIN_CORALSTONE_WALL, BRAIN_CHISELED_CORALSTONE,

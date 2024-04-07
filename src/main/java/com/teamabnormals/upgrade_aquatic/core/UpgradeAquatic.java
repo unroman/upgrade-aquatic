@@ -12,6 +12,7 @@ import com.teamabnormals.upgrade_aquatic.client.renderer.entity.jellyfish.Cassio
 import com.teamabnormals.upgrade_aquatic.client.renderer.entity.jellyfish.ImmortalJellyfishRenderer;
 import com.teamabnormals.upgrade_aquatic.core.data.client.UABlockStateProvider;
 import com.teamabnormals.upgrade_aquatic.core.data.server.UADatapackBuiltinEntriesProvider;
+import com.teamabnormals.upgrade_aquatic.core.data.server.UARecipeProvider;
 import com.teamabnormals.upgrade_aquatic.core.data.server.modifiers.UAAdvancementModifierProvider;
 import com.teamabnormals.upgrade_aquatic.core.data.server.modifiers.UALootModifierProvider;
 import com.teamabnormals.upgrade_aquatic.core.data.server.tags.*;
@@ -110,6 +111,7 @@ public class UpgradeAquatic {
 		generator.addProvider(includeServer, new UALootModifierProvider(output, provider));
 		generator.addProvider(includeServer, new UAAdvancementModifierProvider(output, provider));
 		generator.addProvider(includeServer, new UADatapackBuiltinEntriesProvider(output, provider));
+		generator.addProvider(includeServer, new UARecipeProvider(output));
 
 		boolean includeClient = event.includeClient();
 		generator.addProvider(includeClient, new UABlockStateProvider(output, helper));
