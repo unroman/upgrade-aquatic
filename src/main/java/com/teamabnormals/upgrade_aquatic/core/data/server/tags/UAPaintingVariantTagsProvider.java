@@ -18,6 +18,10 @@ public class UAPaintingVariantTagsProvider extends PaintingVariantTagsProvider {
 
 	@Override
 	public void addTags(Provider provider) {
-		this.tag(PaintingVariantTags.PLACEABLE).add(UAPaintingVariants.SIGHTLESS.getKey());
+		this.tag(PaintingVariantTags.PLACEABLE).add(
+				UAPaintingVariants.SIGHTLESS.getKey(),
+				UAPaintingVariants.MONUMENT.getKey(),
+				UAPaintingVariants.UTENSIL.getKey()
+		);
 	}
 }

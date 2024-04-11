@@ -1,5 +1,7 @@
 {
   "values": [
-    "upgrade_aquatic:sightless"
+    "upgrade_aquatic:sightless",
+    "upgrade_aquatic:monument",
+    "upgrade_aquatic:utensil"
   ]
 }
