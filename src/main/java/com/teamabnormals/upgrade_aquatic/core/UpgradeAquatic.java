@@ -11,6 +11,7 @@ import com.teamabnormals.upgrade_aquatic.client.renderer.entity.jellyfish.BoxJel
 import com.teamabnormals.upgrade_aquatic.client.renderer.entity.jellyfish.CassiopeaJellyfishRenderer;
 import com.teamabnormals.upgrade_aquatic.client.renderer.entity.jellyfish.ImmortalJellyfishRenderer;
 import com.teamabnormals.upgrade_aquatic.core.data.client.UABlockStateProvider;
+import com.teamabnormals.upgrade_aquatic.core.data.client.UASpriteSourceProvider;
 import com.teamabnormals.upgrade_aquatic.core.data.server.UADatapackBuiltinEntriesProvider;
 import com.teamabnormals.upgrade_aquatic.core.data.server.UARecipeProvider;
 import com.teamabnormals.upgrade_aquatic.core.data.server.modifiers.UAAdvancementModifierProvider;
@@ -101,20 +102,25 @@ public class UpgradeAquatic {
 		CompletableFuture<Provider> provider = event.getLookupProvider();
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
-		boolean includeServer = event.includeServer();
-		UABlockTagsProvider blockTags = new UABlockTagsProvider(output, provider, helper);
-		generator.addProvider(includeServer, blockTags);
-		generator.addProvider(includeServer, new UAItemTagsProvider(output, provider, blockTags.contentsGetter(), helper));
-		generator.addProvider(includeServer, new UAEntityTypeTagsProvider(output, provider, helper));
-		generator.addProvider(includeServer, new UABiomeTagsProvider(output, provider, helper));
-		generator.addProvider(includeServer, new UAPaintingVariantTagsProvider(output, provider, helper));
-		generator.addProvider(includeServer, new UALootModifierProvider(output, provider));
-		generator.addProvider(includeServer, new UAAdvancementModifierProvider(output, provider));
-		generator.addProvider(includeServer, new UADatapackBuiltinEntriesProvider(output, provider));
-		generator.addProvider(includeServer, new UARecipeProvider(output));
+		boolean server = event.includeServer();
+		UADatapackBuiltinEntriesProvider datapackEntries = new UADatapackBuiltinEntriesProvider(output, provider);
+		generator.addProvider(server, datapackEntries);
+		provider = datapackEntries.getRegistryProvider();
 
-		boolean includeClient = event.includeClient();
-		generator.addProvider(includeClient, new UABlockStateProvider(output, helper));
+		UABlockTagsProvider blockTags = new UABlockTagsProvider(output, provider, helper);
+		generator.addProvider(server, blockTags);
+		generator.addProvider(server, new UAItemTagsProvider(output, provider, blockTags.contentsGetter(), helper));
+		generator.addProvider(server, new UAEntityTypeTagsProvider(output, provider, helper));
+		generator.addProvider(server, new UABiomeTagsProvider(output, provider, helper));
+		generator.addProvider(server, new UAPaintingVariantTagsProvider(output, provider, helper));
+		generator.addProvider(server, new UATrimMaterialTagsProvider(output, provider, helper));
+		generator.addProvider(server, new UALootModifierProvider(output, provider));
+		generator.addProvider(server, new UAAdvancementModifierProvider(output, provider));
+		generator.addProvider(server, new UARecipeProvider(output));
+
+		boolean client = event.includeClient();
+		generator.addProvider(client, new UABlockStateProvider(output, helper));
+		generator.addProvider(client, new UASpriteSourceProvider(output, helper));
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {

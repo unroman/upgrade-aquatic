@@ -7,6 +7,7 @@ import com.teamabnormals.upgrade_aquatic.core.other.UADamageTypes;
 import com.teamabnormals.upgrade_aquatic.core.other.UAStructureRepaletters;
 import com.teamabnormals.upgrade_aquatic.core.registry.UAFeatures.UAConfiguredFeatures;
 import com.teamabnormals.upgrade_aquatic.core.registry.UAFeatures.UAPlacedFeatures;
+import com.teamabnormals.upgrade_aquatic.core.registry.UATrimMaterials;
 import com.teamabnormals.upgrade_aquatic.core.registry.UAWorldCarvers.UAConfiguredWorldCarvers;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.RegistrySetBuilder;
@@ -26,6 +27,7 @@ public class UADatapackBuiltinEntriesProvider extends DatapackBuiltinEntriesProv
 			.add(Registries.CONFIGURED_FEATURE, UAConfiguredFeatures::bootstrap)
 			.add(Registries.PLACED_FEATURE, UAPlacedFeatures::bootstrap)
 			.add(Registries.CONFIGURED_CARVER, UAConfiguredWorldCarvers::bootstrap)
+			.add(Registries.TRIM_MATERIAL, UATrimMaterials::bootstrap)
 			.add(ForgeRegistries.Keys.BIOME_MODIFIERS, UABiomeModifiers::bootstrap);
 
 	public UADatapackBuiltinEntriesProvider(PackOutput output, CompletableFuture<Provider> provider) {

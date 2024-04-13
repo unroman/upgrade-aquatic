@@ -1,0 +1,9 @@
+{
+  "asset_name": "upgrade_aquatic_tooth",
+  "description": {
+    "color": "#E8F4F0",
+    "translate": "trim_material.upgrade_aquatic.tooth"
+  },
+  "ingredient": "upgrade_aquatic:thrasher_tooth",
+  "item_model_index": -1.0
+}

@@ -1,6 +1,7 @@
 package com.teamabnormals.upgrade_aquatic.core.data.server.tags;
 
 import com.teamabnormals.upgrade_aquatic.core.UpgradeAquatic;
+import com.teamabnormals.upgrade_aquatic.core.registry.UAItems;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -19,6 +20,7 @@ public class UAItemTagsProvider extends ItemTagsProvider {
 
 	@Override
 	protected void addTags(Provider provider) {
+		this.tag(ItemTags.TRIM_MATERIALS).add(UAItems.THRASHER_TOOTH.get());
 		this.copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
 	}
 }
