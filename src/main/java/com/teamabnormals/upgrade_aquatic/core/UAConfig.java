@@ -12,7 +12,6 @@ public class UAConfig {
 
 	public static class Common {
 		public final BooleanValue clericsBuyThrasherTeeth;
-		public final BooleanValue drownedSwimmingAnimation;
 		public final BooleanValue leatherworkersSellBedrolls;
 
 		@ConfigKey("kelpy_ocean_ruins")
@@ -46,7 +45,6 @@ public class UAConfig {
 			builder.pop();
 
 			builder.push("mobs");
-			this.drownedSwimmingAnimation = builder.comment("Give Drowneds a swimming animation, like in bedrock edition").define("Drowned swimming animation", true);
 			this.nautilusMaxSpawnHeight = builder.comment("The max height that Nautilus can spawn at").defineInRange("Nautilus max spawn height", 30, -64, 320);
 			builder.push("thrasher");
 			this.thrasherMaxSpawnHeight = builder.comment("The max height that Thrashers can spawn at").defineInRange("Thrasher max spawn height", 30, -64, 320);

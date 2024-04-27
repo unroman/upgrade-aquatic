@@ -55,7 +55,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
-import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -110,10 +109,6 @@ public class UAEvents {
 					((Phantom) entity).setTarget(null);
 				}
 			}
-		}
-		if (entity instanceof Drowned && UAConfig.COMMON.drownedSwimmingAnimation.get() && entity.isEffectiveAi()) {
-			Pose pose = entity.getDeltaMovement().horizontalDistanceSqr() >= 0.000625F && entity.getCommandSenderWorld().getFluidState(entity.blockPosition().below()).is(FluidTags.WATER) ? Pose.SWIMMING : Pose.STANDING;
-			if (entity.getPose() != pose) entity.setPose(pose);
 		}
 	}
 
@@ -214,15 +209,6 @@ public class UAEvents {
 			if (event.isDismounting() && player.isAlive() && !player.isCreative() && !player.isSpectator() && thrasher.isAlive() && !thrasher.isStunned()) {
 				event.setCanceled(true);
 			}
-		}
-	}
-
-	@SubscribeEvent
-	public static void onDrownedPoseChange(EntityEvent.Size event) {
-		Entity entity = event.getEntity();
-		if (entity instanceof Drowned && entity.getPose() == Pose.SWIMMING && UAConfig.COMMON.drownedSwimmingAnimation.get()) {
-			event.setNewSize(new EntityDimensions(event.getOldSize().width, 0.40F, false));
-			event.setNewEyeHeight(0.40F);
 		}
 	}
 
