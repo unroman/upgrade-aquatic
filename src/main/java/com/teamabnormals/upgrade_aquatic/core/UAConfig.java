@@ -11,6 +11,8 @@ import org.apache.commons.lang3.tuple.Pair;
 public class UAConfig {
 
 	public static class Common {
+		public final BooleanValue turtleShellRework;
+
 		public final BooleanValue clericsBuyThrasherTeeth;
 		public final BooleanValue leatherworkersSellBedrolls;
 
@@ -32,6 +34,7 @@ public class UAConfig {
 
 		public Common(ForgeConfigSpec.Builder builder) {
 			builder.push("items");
+			this.turtleShellRework = builder.comment("Turtle Shells now give unlimited Water Breathing as long as they are on, but run out of durability as they do so").define("Turtle Shell rework", true);
 			builder.push("trades");
 			this.clericsBuyThrasherTeeth = builder.define("Clerics buy thrasher teeth", true);
 			this.leatherworkersSellBedrolls = builder.define("Leatherworkers sell bedrolls", true);

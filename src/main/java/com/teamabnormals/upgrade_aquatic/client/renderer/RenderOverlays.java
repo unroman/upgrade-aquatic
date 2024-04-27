@@ -79,7 +79,7 @@ public class RenderOverlays {
 
 	@SubscribeEvent
 	public static void renderScuteOverAir(RenderGuiOverlayEvent.Pre event) {
-		if (event.getOverlay() == VanillaGuiOverlay.AIR_LEVEL.type()) {
+		if (event.getOverlay() == VanillaGuiOverlay.AIR_LEVEL.type() && UAConfig.COMMON.turtleShellRework.get()) {
 			int scaledWidth = MC.getWindow().getGuiScaledWidth();
 			int scaledHeight = MC.getWindow().getGuiScaledHeight();
 			ForgeGui forgeGui = (ForgeGui) MC.gui;

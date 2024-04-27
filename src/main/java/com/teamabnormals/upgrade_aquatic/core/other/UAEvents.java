@@ -190,7 +190,7 @@ public class UAEvents {
 			serverPlayer.connection.send(new ClientboundAwardStatsPacket(object2intmap));
 		}
 		ItemStack headSlotStack = player.getItemBySlot(EquipmentSlot.HEAD);
-		if (event.phase == Phase.END && player.isEffectiveAi() && !headSlotStack.isEmpty() && headSlotStack.is(Items.TURTLE_HELMET)) {
+		if (event.phase == Phase.END && player.isEffectiveAi() && !headSlotStack.isEmpty() && headSlotStack.is(Items.TURTLE_HELMET) && UAConfig.COMMON.turtleShellRework.get()) {
 			int timeTillDamage = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, headSlotStack) > 0 ? 40 * (1 + EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, headSlotStack) / 2) : 40;
 			if (player.isEyeInFluid(FluidTags.WATER)) {
 				player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 100));
