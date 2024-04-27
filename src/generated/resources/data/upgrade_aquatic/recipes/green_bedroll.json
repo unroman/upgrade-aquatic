@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bedroll",
+  "key": {
+    "#": {
+      "item": "minecraft:leather"
+    },
+    "X": {
+      "item": "minecraft:green_wool"
+    }
+  },
+  "pattern": [
+    "##X",
+    "###"
+  ],
+  "result": {
+    "item": "upgrade_aquatic:green_bedroll"
+  },
+  "show_notification": true
+}

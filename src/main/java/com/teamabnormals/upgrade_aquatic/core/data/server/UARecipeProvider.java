@@ -13,17 +13,19 @@ import com.teamabnormals.woodworks.core.data.server.WoodworksRecipeProvider;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.BlockFamily.Variant;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeBuilder;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 import static com.teamabnormals.upgrade_aquatic.core.registry.UABlocks.*;
@@ -46,6 +48,8 @@ public class UARecipeProvider extends BlueprintRecipeProvider {
 		foodCookingRecipes(consumer, UAItems.PERCH.get(), UAItems.COOKED_PERCH.get());
 		foodCookingRecipes(consumer, UAItems.LIONFISH.get(), UAItems.COOKED_LIONFISH.get());
 		foodCookingRecipes(consumer, PICKERELWEED.get(), UAItems.BOILED_PICKERELWEED.get());
+
+		bedrollRecipes(consumer);
 
 		storageRecipes(consumer, RecipeCategory.MISC, Items.SCUTE, RecipeCategory.BUILDING_BLOCKS, SCUTE_BLOCK.get());
 
@@ -134,5 +138,25 @@ public class UARecipeProvider extends BlueprintRecipeProvider {
 
 	public void coralBlockRecipe(Consumer<FinishedRecipe> consumer, Block coralBlock, Block coral, TagKey<Item> itemTag) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, coralBlock).define('#', itemTag).pattern("##").pattern("##").unlockedBy(getHasName(coral), has(itemTag)).save(consumer, new ResourceLocation(this.getModID(), RecipeBuilder.getDefaultRecipeId(coralBlock).getPath()));
+	}
+
+
+	protected void bedrollRecipes(Consumer<FinishedRecipe> consumer) {
+		List<Item> dyes = List.of(Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE);
+		List<Item> wools = List.of(Items.BLACK_WOOL, Items.BLUE_WOOL, Items.BROWN_WOOL, Items.CYAN_WOOL, Items.GRAY_WOOL, Items.GREEN_WOOL, Items.LIGHT_BLUE_WOOL, Items.LIGHT_GRAY_WOOL, Items.LIME_WOOL, Items.MAGENTA_WOOL, Items.ORANGE_WOOL, Items.PINK_WOOL, Items.PURPLE_WOOL, Items.RED_WOOL, Items.YELLOW_WOOL, Items.WHITE_WOOL);
+		List<ItemLike> bedrolls = List.of(BLACK_BEDROLL.get(), BLUE_BEDROLL.get(), BROWN_BEDROLL.get(), CYAN_BEDROLL.get(), GRAY_BEDROLL.get(), GREEN_BEDROLL.get(), LIGHT_BLUE_BEDROLL.get(), LIGHT_GRAY_BEDROLL.get(), LIME_BEDROLL.get(), MAGENTA_BEDROLL.get(), ORANGE_BEDROLL.get(), PINK_BEDROLL.get(), PURPLE_BEDROLL.get(), RED_BEDROLL.get(), YELLOW_BEDROLL.get(), WHITE_BEDROLL.get());
+
+		for (int i = 0; i < dyes.size(); ++i) {
+			Item dye = dyes.get(i);
+			Item wool = wools.get(i);
+			ItemLike bedroll = bedrolls.get(i);
+
+			ArrayList<ItemLike> bedrollList = new ArrayList<>(bedrolls);
+			bedrollList.add(BEDROLL.get());
+			bedrollList.remove(bedroll);
+
+			ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, bedroll).requires(dye).requires(Ingredient.of(bedrollList.stream().map(ItemStack::new))).group("bedroll").unlockedBy("has_needed_dye", has(dye)).save(consumer, new ResourceLocation(this.getModID(), "dye_" + getItemName(bedroll)));
+			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, bedroll).define('#', Items.LEATHER).define('X', wool).pattern("##X").pattern("###").group("bedroll").unlockedBy(getHasName(wool), has(wool)).save(consumer);
+		}
 	}
 }

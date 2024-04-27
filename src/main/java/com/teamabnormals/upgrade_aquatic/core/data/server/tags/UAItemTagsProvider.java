@@ -27,6 +27,7 @@ public class UAItemTagsProvider extends BlueprintItemTagsProvider {
 		this.copyWoodsetTags();
 		this.copy(UABlockTags.DRIFTWOOD_LOGS, UAItemTags.DRIFTWOOD_LOGS);
 		this.copy(UABlockTags.RIVER_LOGS, UAItemTags.RIVER_LOGS);
+		this.copy(UABlockTags.BEDROLLS, UAItemTags.BEDROLLS);
 
 		this.tag(ItemTags.BOATS).add(UAItems.DRIFTWOOD_BOAT.getFirst().get(), UAItems.RIVER_BOAT.getFirst().get());
 		this.tag(ItemTags.CHEST_BOATS).add(UAItems.DRIFTWOOD_BOAT.getSecond().get(), UAItems.RIVER_BOAT.getSecond().get());

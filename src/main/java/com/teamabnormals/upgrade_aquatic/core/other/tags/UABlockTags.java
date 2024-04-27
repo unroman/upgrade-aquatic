@@ -9,6 +9,8 @@ public class UABlockTags {
 	public static final TagKey<Block> DRIFTWOOD_LOGS = blockTag("driftwood_logs");
 	public static final TagKey<Block> RIVER_LOGS = blockTag("river_logs");
 
+	public static final TagKey<Block> BEDROLLS = blockTag("bedrolls");
+
 	private static TagKey<Block> blockTag(String name) {
 		return TagUtil.blockTag(UpgradeAquatic.MOD_ID, name);
 	}

@@ -59,9 +59,10 @@ public class UABlockTagsProvider extends BlockTagsProvider {
 		this.tag(BlockTags.OVERWORLD_NATURAL_LOGS).add(DRIFTWOOD_LOG.get(), RIVER_LOG.get());
 		this.tag(BlockTags.LEAVES).add(RIVER_LEAVES.get());
 		this.tag(BlockTags.SAPLINGS).add(RIVER_SAPLING.get());
-		
+
 		this.tag(UABlockTags.DRIFTWOOD_LOGS).add(DRIFTWOOD_LOG.get(), DRIFTWOOD.get(), STRIPPED_DRIFTWOOD_LOG.get(), STRIPPED_DRIFTWOOD.get());
 		this.tag(UABlockTags.RIVER_LOGS).add(RIVER_LOG.get(), RIVER_WOOD.get(), STRIPPED_RIVER_LOG.get(), STRIPPED_RIVER_WOOD.get());
+		this.tag(UABlockTags.BEDROLLS).add(BEDROLL.get(), BLACK_BEDROLL.get(), BLUE_BEDROLL.get(), BROWN_BEDROLL.get(), CYAN_BEDROLL.get(), GRAY_BEDROLL.get(), GREEN_BEDROLL.get(), LIGHT_BLUE_BEDROLL.get(), LIGHT_GRAY_BEDROLL.get(), LIME_BEDROLL.get(), MAGENTA_BEDROLL.get(), ORANGE_BEDROLL.get(), PINK_BEDROLL.get(), PURPLE_BEDROLL.get(), RED_BEDROLL.get(), YELLOW_BEDROLL.get(), WHITE_BEDROLL.get());
 
 		this.tag(BlueprintBlockTags.WOODEN_BOARDS).add(DRIFTWOOD_BOARDS.get(), RIVER_BOARDS.get());
 		this.tag(BlueprintBlockTags.WOODEN_CHESTS).add(DRIFTWOOD_CHEST.get(), RIVER_CHEST.get());
