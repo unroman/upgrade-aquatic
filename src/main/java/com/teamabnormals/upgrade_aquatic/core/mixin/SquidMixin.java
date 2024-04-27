@@ -1,5 +1,6 @@
 package com.teamabnormals.upgrade_aquatic.core.mixin;
 
+import com.teamabnormals.upgrade_aquatic.core.UAConfig;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -22,9 +23,19 @@ public abstract class SquidMixin extends Entity {
 
 	@Inject(at = @At("HEAD"), method = "spawnInk")
 	private void spawnInk(CallbackInfo info) {
-		for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(2.5F, 2.5F, 2.5F))) {
-			if (!(entity instanceof Squid))
-				entity.addEffect(new MobEffectInstance(((Squid) (Object) this) instanceof GlowSquid ? MobEffects.NIGHT_VISION : MobEffects.BLINDNESS, 100));
+		boolean squid = UAConfig.COMMON.squidsGiveBlindness.get();
+		boolean glowSquid = UAConfig.COMMON.glowSquidsGiveNightVision.get();
+
+		if (!this.level().isClientSide() && (squid || glowSquid)) {
+			for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(2.5F, 2.5F, 2.5F))) {
+				if (!(entity instanceof Squid)) {
+					if (glowSquid && ((Squid) (Object) this) instanceof GlowSquid) {
+						entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 100));
+					} else if (squid) {
+						entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100));
+					}
+				}
+			}
 		}
 	}
 }

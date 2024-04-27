@@ -28,6 +28,9 @@ public class UAConfig {
 		public final BooleanValue renewableSandRequiresMagmaBlocks;
 		public final BooleanValue renewableGravel;
 
+		public final BooleanValue squidsGiveBlindness;
+		public final BooleanValue glowSquidsGiveNightVision;
+
 		public Common(ForgeConfigSpec.Builder builder) {
 			builder.push("items");
 			builder.push("trades");
@@ -49,6 +52,10 @@ public class UAConfig {
 			this.thrasherMaxSpawnHeight = builder.comment("The max height that Thrashers can spawn at").defineInRange("Thrasher max spawn height", 30, -64, 320);
 			this.thrasherDaytimeSpawnChance = builder.comment("The chance of a Thrasher spawning during the daytime").defineInRange("Thrasher daytime spawn chance", 0.75D, 0.0D, 1.0D);
 			this.greatThrasherSpawnChance = builder.comment("The chance a Thrasher has of spawning as a Great Thrasher in Deep Frozen Oceans").defineInRange("Great Thrasher spawn chance", 0.25D, 0.0D, 1.0D);
+			builder.pop();
+			builder.push("squid");
+			this.squidsGiveBlindness = builder.comment("If Squids give nearby entities Blindness when releasing ink").define("Squids give Blindness", true);
+			this.glowSquidsGiveNightVision = builder.comment("If Glow Squids give nearby entities Night Vision when releasing ink").define("Glow Squids give Night Vision", true);
 			builder.pop();
 			builder.pop();
 
